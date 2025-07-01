@@ -3,7 +3,7 @@ function MusicPlay() {
   this._songsList = [
     {
       id: 0,
-      path: "../src/audio/Ascence - About You  Trap  NCS - Copyright Free Music.mp3",
+      path: "./public/audio/Ascence - About You  Trap  NCS - Copyright Free Music.mp3",
       image_rep: "./src/img/aboutyou.jpg",
       song_name: "About You",
       author_name: "Ascence",
@@ -13,7 +13,7 @@ function MusicPlay() {
 
     {
       id: 1,
-      path: "../src/audio/NEFFEX - Grateful [Copyright Free] No.54.mp3",
+      path: "./public/audio/NEFFEX - Grateful [Copyright Free] No.54.mp3",
       image_rep: "./src/img/grateful.jpg",
       song_name: "Grateful",
       author_name: "NEFFEX",
@@ -23,7 +23,7 @@ function MusicPlay() {
 
     {
       id: 2,
-      path: "../src/audio/In The End [Official HD Music Video] - Linkin Park.mp3",
+      path: "./public/audio/In The End [Official HD Music Video] - Linkin Park.mp3",
       image_rep: "./src/img/intheend.jpg",
       song_name: "In the End",
       author_name: "Linkin Park",
@@ -33,7 +33,7 @@ function MusicPlay() {
 
     {
       id: 3,
-      path: "../src/audio/Warriyo - Mortals (ft. Laura Brehm).mp3",
+      path: "./public/audio/Warriyo - Mortals (ft. Laura Brehm).mp3",
       image_rep: "./src/img/mortals.jpg",
       song_name: "Mortals",
       author_name: "Warriyo",
@@ -43,7 +43,7 @@ function MusicPlay() {
 
     {
       id: 4,
-      path: "../src/audio/Fall Out Boy - Centuries (Lyrics).mp3",
+      path: "./public/audio/Fall Out Boy - Centuries (Lyrics).mp3",
       image_rep: "./src/img/centuries.jpg",
       song_name: "Centuries",
       author_name: "Fall Out Boy",
@@ -53,7 +53,7 @@ function MusicPlay() {
 
     {
       id: 5,
-      path: "../src/audio/Lost Sky - Fearless pt.II (feat. Chris Linton)  Trap  NCS - Copyright Free Music.mp3",
+      path: "./public/audio/Lost Sky - Fearless pt.II (feat. Chris Linton)  Trap  NCS - Copyright Free Music.mp3",
       image_rep: "./src/img/fearless.jpg",
       song_name: "Fearless",
       author_name: "Lost Sky",
@@ -63,7 +63,7 @@ function MusicPlay() {
 
     {
       id: 6,
-      path: "../src/audio/Cartoon, Jéja - C U Again ft. Mikk Mäe (Cartoon, Jéja, Futuristik VIP)  NCS - Copyright Free Music.mp3",
+      path: "./public/audio/Cartoon, Jéja - C U Again ft. Mikk Mäe (Cartoon, Jéja, Futuristik VIP)  NCS - Copyright Free Music.mp3",
       image_rep: "./src/img/seeyouagain.jpeg",
       song_name: "C U Again",
       author_name: "Mikk Mäe, Cartoon, Jéja, Futuristik",
@@ -73,7 +73,7 @@ function MusicPlay() {
 
     {
       id: 7,
-      path: "../src/audio/Egzod & Maestro Chives - Royalty (Lyrics) ft. Neoni.mp3",
+      path: "./public/audio/Egzod & Maestro Chives - Royalty (Lyrics) ft. Neoni.mp3",
       image_rep: "./src/img/royalty.png",
       song_name: "Royalty",
       author_name: "Egzod & Maestro Chives",
@@ -83,7 +83,7 @@ function MusicPlay() {
 
     {
       id: 8,
-      path: "../src/audio/Eternxlkz - BRODYAGA FUNK (Official Audio).mp3",
+      path: "./public/audio/Eternxlkz - BRODYAGA FUNK (Official Audio).mp3",
       image_rep: "./src/img/brodyaga.jpeg",
       song_name: "BRODYAGA FUNK",
       author_name: "Eternxlkz",
@@ -93,7 +93,7 @@ function MusicPlay() {
 
     {
       id: 9,
-      path: "../src/audio/Unknown Brain x Rival - Control (ft. Jex) [Lyric Video].mp3",
+      path: "./public/audio/Unknown Brain x Rival - Control (ft. Jex) [Lyric Video].mp3",
       image_rep: "./src/img/control.jpeg",
       song_name: "Control",
       author_name: "Unknown Brain x Rival",
@@ -103,7 +103,7 @@ function MusicPlay() {
 
     {
       id: 10,
-      path: "../src/audio/Thousand Foot Krutch_ Courtesy Call (Official Audio).mp3",
+      path: "./public/audio/Thousand Foot Krutch_ Courtesy Call (Official Audio).mp3",
       image_rep: "./src/img/coutersycall.jpeg",
       song_name: "Courtesy Call",
       author_name: "Thousand Foot Krutch",
