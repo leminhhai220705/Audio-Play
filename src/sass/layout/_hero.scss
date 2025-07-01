@@ -1,0 +1,100 @@
+@use "../abstracts/fonts" as font;
+@use "../abstracts/colors" as color;
+.main-wrapper {
+  background-color: color.$background-color;
+  color: color.$white;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(777px + 150px);
+  padding-bottom: 9rem;
+}
+
+.hero-wrapper {
+  // regular css
+  background-color: color.$iconic-color;
+  padding: 2rem 3rem;
+
+  // nested-rules
+  & > .hero-upper {
+    // regular CSS
+    display: flex;
+
+    // nested-rules:
+    // cover-art
+    .cover-art {
+      width: 27rem;
+      max-width: 100%;
+      height: 24rem;
+      aspect-ratio: 10 / 9;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+
+    .cover-art > .cover-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    // banner-title
+    .banner-title {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 3rem 4rem 0;
+      flex: 1;
+    }
+
+    .banner-title > .sub-title {
+      font: {
+        size: 1.4rem;
+        weight: 200;
+      }
+    }
+
+    .banner-title > .main-title {
+      font: {
+        size: 7.5rem;
+      }
+    }
+
+    .banner-title > .author {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      font-size: 1.4rem;
+    }
+
+    .banner-title > .author .name:hover {
+      text-decoration: underline;
+    }
+
+    .banner-title > .author .avatar {
+      width: 4.5rem;
+      max-width: 100%;
+      height: 4.5rem;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .banner-title > .author .data {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .banner-title > .author .data * {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .banner-title > .author .data *::before {
+      content: "\f111";
+      font: {
+        family: "Font Awesome 6 Free";
+        weight: 900;
+        size: 0.4rem;
+      }
+    }
+  }
+}

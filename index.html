@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./src/css/main.css" />
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <!-- Pass link song to src attr -->
+
+      <!-- inner content -->
+      <header class="hero-wrapper">
+        <div class="hero-upper">
+          <figure class="cover-art">
+            <img
+              class="cover-img"
+              src="./src/img/cover-art.jpg"
+              alt="cover-art"
+            />
+          </figure>
+          <div class="banner-title">
+            <p class="sub-title">Public Playlist</p>
+            <h1 class="main-title">Thrilling Music For Gamer</h1>
+            <div class="author">
+              <img
+                src="./src/img/avatar_default.png"
+                alt="avatar"
+                class="avatar"
+              />
+              <p class="name">
+                <a href="#!">CR7</a>
+              </p>
+              <div class="data">
+                <span class="saves-count">11.422 saves</span>
+                <span class="songs-count">62 songs</span>
+                <time datetime="PT2H30M">2 hr 30 min</time>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <div class="bar-control">
+          <div class="bar-control__child">
+            <div id="play-btn" class="play-btn">
+              <i id="play-circle-icon" class="fa-solid fa-circle-play"></i>
+            </div>
+
+            <div class="preview-btn">
+              <img src="./src/img/cover-art.jpg" alt="" />
+              <div class="preview-overlay"></div>
+            </div>
+
+            <div id="shuffle-btn" class="shuffle-btn">
+              <i class="fa-solid fa-shuffle"></i>
+            </div>
+
+            <div class="check-btn">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+
+            <div class="download-btn">
+              <i class="fa-solid fa-circle-arrow-down"></i>
+            </div>
+
+            <div class="ellipsis-btn">
+              <i class="fa-solid fa-ellipsis"></i>
+            </div>
+          </div>
+          <div class="bar-control__child">
+            <div class="search-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+            <div class="order-btn">
+              <a href="#!">
+                Custom Order
+                <i class="fa-solid fa-list"></i>
+              </a>
+              <ul class="menu-order"></ul>
+            </div>
+          </div>
+        </div>
+
+        <div id="musics-table" class="musics-table">
+          <div class="musics-table__child musics-title">
+            <div class="music-index">#</div>
+            <div style="color: #bababa" class="music-name">Title</div>
+            <div class="album-name">
+              <a href="#!">Album</a>
+            </div>
+            <div class="music-date">
+              <time datetime="">Date added</time>
+            </div>
+            <div class="music-time">
+              <i class="fa-regular fa-clock"></i>
+            </div>
+          </div>
+
+          <div class="divide-bar"></div>
+
+          <div id="list-render" class="list-render"></div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-item music-info">
+          <div class="footer-music-avatar">
+            <img id="music-avatar" src="./src/img/aboutyou.jpg" alt="" />
+          </div>
+          <div class="footer-music-name">
+            <a id="music-name" class="music-name" href="#!">
+              Nop - Lofi Version
+            </a>
+            <a id="author-name" class="author-name" href="#!">Singer 1</a>
+          </div>
+          <div class="plus-circle">
+            <i class="fa-solid fa-plus"></i>
+          </div>
+        </div>
+
+        <div class="footer-item music-control">
+          <div class="footer-control-menu">
+            <div id="footer-shuffle-btn" class="footer-shuffle">
+              <i class="fa-solid fa-shuffle"></i>
+            </div>
+
+            <div id="footer-prev" class="footer-prev">
+              <i class="fa-solid fa-backward-step"></i>
+            </div>
+            <div id="footer-play" class="footer-play">
+              <i id="play-icon" class="fa-solid fa-play"></i>
+            </div>
+            <div id="footer-next" class="footer-next">
+              <i class="fa-solid fa-forward-step"></i>
+            </div>
+            <div id="repeat-btn" class="footer-repeat">
+              <i class="fa-solid fa-repeat"></i>
+            </div>
+          </div>
+          <div class="footer-seek-bar">
+            <time id="time-start" datetime="PT0M00S" class="time time-start">
+              0:00
+            </time>
+            <input
+              id="slider"
+              type="range"
+              min="0"
+              max="100"
+              value="0"
+              step="1"
+              class="slider"
+            />
+            <audio id="audio"></audio>
+            <time id="time-end" datetime="PT2M19S" class="time time-end">
+              2:19
+            </time>
+          </div>
+        </div>
+        <div class="footer-item music-ultilities">
+          <div class="footer-now-playing">
+            <i class="fa-solid fa-play"></i>
+          </div>
+          <div class="footer-script">
+            <i class="fa-solid fa-audio-description"></i>
+          </div>
+          <div class="footer-queue">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+          <div class="footer-device">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+          </div>
+          <div class="footer-volume">
+            <i class="fa-solid fa-volume-high"></i>
+            <input
+              id="volume-bar"
+              class="volume-bar"
+              type="range"
+              min="0"
+              max="100"
+              value="50"
+            />
+          </div>
+          <div class="footer-miniscreen">
+            <i class="fa-solid fa-window-restore"></i>
+          </div>
+          <div class="footer-fullscreen">
+            <i class="fa-solid fa-expand"></i>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="./src/main.js"></script>
+  </body>
+</html>
+
+<!-- //  <div class="musics-table__child music-item active">
+//             <div class="music-index">2</div>
+//             <div class="music-name">
+//               <img src="./src/img/music-2.jpg" alt="" />
+//               <div class="song-author">
+//                 <p class="song-name">Fall Rain</p>
+//                 <p class="author-name">Singer 2</p>
+//               </div>
+//             </div>
+//             <div class="album-name">
+//               <a href="#!">Fall Rain</a>
+//             </div>
+//             <div class="music-date">
+//               <time datetime="2025-06-29">29 Jun 2025</time>
+//             </div>
+//             <div class="music-time">
+//               <time datetime="PT2M19S">2:19</time>
+//             </div>
+//           </div> -->

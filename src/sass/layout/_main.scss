@@ -1,0 +1,243 @@
+@use "../abstracts/fonts" as font;
+@use "../abstracts/colors" as color;
+
+.main-content {
+  flex: 1;
+  background: #004017;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 64, 23, 1) 0%,
+    rgba(25, 20, 20, 1) 44%
+  );
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+
+  //   Nested
+  .bar-control {
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+
+    &__child {
+      display: flex;
+      gap: 2.7rem;
+    }
+
+    &__child:first-child {
+      display: flex;
+      align-items: center;
+    }
+
+    &__child:first-child > * {
+      cursor: pointer;
+      font-size: 3rem;
+    }
+
+    &__child:first-child .preview-btn {
+      width: 4rem;
+      max-width: 100%;
+      height: 5rem;
+      border: 3px solid #ccc;
+      border-radius: 1rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    &__child:first-child .preview-btn .preview-overlay {
+      background-color: #212121a7;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      cursor: pointer;
+    }
+
+    &__child:first-child .preview-btn:hover .preview-overlay,
+    &__child:first-child .preview-btn:hover .preview-overlay::after {
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      content: "\f04b";
+      opacity: 1;
+      visibility: visible;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1rem;
+    }
+
+    &__child:first-child .preview-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    &__child * {
+      transform: scale(1);
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    &__child *:hover {
+      transform: scale(1.03);
+    }
+
+    &__child:first-child .shuffle-btn:hover,
+    &__child:first-child .ellipsis-btn:hover {
+      color: color.$white;
+    }
+
+    &__child:first-child .play-btn {
+      font-size: 5.9rem;
+      color: color.$active-color;
+    }
+
+    &__child:first-child .shuffle-btn {
+      color: color.$gray;
+    }
+
+    &__child:first-child .shuffle-btn.shuffle {
+      color: color.$active-color;
+    }
+
+    &__child:first-child .shuffle-btn.shuffle:hover {
+      color: color.$active-color;
+    }
+
+    &__child:first-child .check-btn {
+      color: color.$active-color;
+    }
+
+    &__child:first-child .download-btn {
+      color: color.$active-color;
+    }
+
+    &__child:first-child .ellipsis-btn {
+      color: color.$gray;
+    }
+
+    &__child:last-child .search-btn i {
+      color: color.$gray;
+      cursor: pointer;
+    }
+
+    &__child:last-child .order-btn a {
+      color: color.$gray;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    &__child:last-child .search-btn i:hover,
+    &__child:last-child .order-btn a:hover {
+      color: color.$white;
+    }
+  }
+
+  .musics-table {
+    flex: 1;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+
+    &__child {
+      display: flex;
+      justify-content: space-between;
+      padding: 1.5rem 3rem 1rem 1rem;
+      transition: background-color 0.1s ease-in-out;
+      border-radius: 0.5rem;
+    }
+
+    &__child > .music-name .song-author {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .author-name {
+        font-size: 1.1rem;
+        color: color.$gray;
+      }
+    }
+
+    .list-render .music-item:hover {
+      background-color: color.$minor-background;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .list-render .music-item:hover .album-name a {
+      color: #ffffff;
+    }
+
+    &__child > * {
+      display: flex;
+      align-items: center;
+    }
+
+    &__child > .music-name {
+      flex: 4;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: flex-start;
+      gap: 1.5rem;
+      width: 64.6rem;
+      max-width: 100%;
+
+      img {
+        width: 3.5rem;
+        max-width: 100%;
+        height: 3.5rem;
+        object-fit: cover;
+      }
+    }
+
+    &__child > :is(.album-name, .music-date) {
+      flex: 2;
+      color: color.$gray;
+    }
+
+    &__child > :is(.music-index, .music-time) {
+      width: 4rem;
+      max-width: 100%;
+      height: 4rem;
+      color: color.$gray;
+    }
+
+    &__child > .music-time {
+      justify-content: flex-end;
+    }
+
+    &__child > .music-index {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 1.8rem;
+    }
+
+    &__child > .album-name a:hover {
+      text-decoration: underline;
+    }
+
+    &__child:first-child {
+      padding-bottom: 0.1rem;
+    }
+
+    .divide-bar {
+      width: 100%;
+      height: 0.1rem;
+      background-color: #bababa39;
+    }
+
+    .music-item.active .music-name {
+      color: color.$active-color;
+    }
+  }
+}
