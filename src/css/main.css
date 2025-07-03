@@ -266,6 +266,14 @@ a {
   font-size: 0.4rem;
 }
 
+.main-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: transparent;
+  display: none;
+  z-index: 0;
+}
+
 .main-content {
   flex: 1;
   background: #004017;
@@ -359,6 +367,43 @@ a {
 }
 .main-content .bar-control__child:first-child .ellipsis-btn {
   color: #bababa;
+}
+.main-content .bar-control__child:last-child .search-btn {
+  position: relative;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.3s ease, opacity 0.3s ease;
+}
+.main-content .bar-control__child:last-child {
+  position: relative;
+}
+.main-content .bar-control__child:last-child .search-input {
+  position: absolute;
+  top: -4px;
+  right: 140px;
+  color: #bababa;
+  border-radius: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: rgba(171, 171, 171, 0.231372549);
+  padding: 0.5rem;
+  max-width: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: max-width 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
+}
+.main-content .bar-control__child:last-child .search-input .input-text {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  display: block;
+  max-width: 80%;
+  font-size: 1.4rem;
+  color: #ccc;
+}
+.main-content .bar-control__child:last-child .search-input .input-text::placeholder {
+  color: #ababab;
 }
 .main-content .bar-control__child:last-child .search-btn i {
   color: #bababa;
@@ -458,6 +503,10 @@ a {
 }
 .main-content .musics-table .music-item.active .music-name {
   color: #1ed760;
+}
+
+.hidden {
+  display: none !important;
 }
 
 .footer {

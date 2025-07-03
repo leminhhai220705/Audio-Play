@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="./src/css/main.css" />
   </head>
   <body>
+    <div id="main-overlay" class="main-overlay"></div>
     <div class="main-wrapper">
       <!-- Pass link song to src attr -->
 
@@ -90,8 +91,17 @@
             </div>
           </div>
           <div class="bar-control__child">
-            <div class="search-btn">
+            <div id="search-btn" class="search-btn">
               <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div id="search-input" class="search-input">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                id="input-text"
+                class="input-text"
+                type="text"
+                placeholder="search in playlist"
+              />
             </div>
 
             <div class="order-btn">
@@ -216,23 +226,3 @@
     <script src="./src/main.js"></script>
   </body>
 </html>
-
-<!-- //  <div class="musics-table__child music-item active">
-//             <div class="music-index">2</div>
-//             <div class="music-name">
-//               <img src="./src/img/music-2.jpg" alt="" />
-//               <div class="song-author">
-//                 <p class="song-name">Fall Rain</p>
-//                 <p class="author-name">Singer 2</p>
-//               </div>
-//             </div>
-//             <div class="album-name">
-//               <a href="#!">Fall Rain</a>
-//             </div>
-//             <div class="music-date">
-//               <time datetime="2025-06-29">29 Jun 2025</time>
-//             </div>
-//             <div class="music-time">
-//               <time datetime="PT2M19S">2:19</time>
-//             </div>
-//           </div> -->

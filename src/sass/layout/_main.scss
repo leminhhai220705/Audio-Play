@@ -1,6 +1,14 @@
 @use "../abstracts/fonts" as font;
 @use "../abstracts/colors" as color;
 
+.main-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: transparent;
+  display: none;
+  z-index: 0;
+}
+
 .main-content {
   flex: 1;
   background: #004017;
@@ -118,6 +126,51 @@
 
     &__child:first-child .ellipsis-btn {
       color: color.$gray;
+    }
+
+    &__child:last-child .search-btn {
+      position: relative;
+      visibility: visible;
+      opacity: 1;
+      transition: visibility 0.3s ease, opacity 0.3s ease;
+    }
+
+    &__child:last-child {
+      position: relative;
+      .search-input {
+        position: absolute;
+        top: -4px;
+        right: 140px;
+        color: color.$gray;
+        border-radius: 0.6rem;
+
+        // translate: 0 10%;
+
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        background-color: #ababab3b;
+        padding: 0.5rem;
+
+        max-width: 0;
+        visibility: hidden;
+        opacity: 0;
+        transition: max-width 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
+      }
+
+      .search-input .input-text {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        display: block;
+        max-width: 80%;
+        font-size: 1.4rem;
+        color: #ccc;
+      }
+
+      .search-input .input-text::placeholder {
+        color: #ababab;
+      }
     }
 
     &__child:last-child .search-btn i {
@@ -240,4 +293,8 @@
       color: color.$active-color;
     }
   }
+}
+
+.hidden {
+  display: none !important;
 }

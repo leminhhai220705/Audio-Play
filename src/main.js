@@ -9,6 +9,7 @@ function MusicPlay() {
       author_name: "Ascence",
       album_name: "About You",
       music_time: "3:04",
+      hidden_state: false,
     },
 
     {
@@ -19,6 +20,7 @@ function MusicPlay() {
       author_name: "NEFFEX",
       album_name: "Grateful",
       music_time: "3:02",
+      hidden_state: false,
     },
 
     {
@@ -29,6 +31,7 @@ function MusicPlay() {
       author_name: "Linkin Park",
       album_name: "Hybrid Theory",
       music_time: "3:38",
+      hidden_state: false,
     },
 
     {
@@ -39,6 +42,7 @@ function MusicPlay() {
       author_name: "Warriyo",
       album_name: "Mortals",
       music_time: "3:48",
+      hidden_state: false,
     },
 
     {
@@ -49,6 +53,7 @@ function MusicPlay() {
       author_name: "Fall Out Boy",
       album_name: "Believers Never Die",
       music_time: "3:46",
+      hidden_state: false,
     },
 
     {
@@ -59,6 +64,7 @@ function MusicPlay() {
       author_name: "Lost Sky",
       album_name: "Fearless",
       music_time: "3:14",
+      hidden_state: false,
     },
 
     {
@@ -69,6 +75,7 @@ function MusicPlay() {
       author_name: "Mikk Mäe, Cartoon, Jéja, Futuristik",
       album_name: "NCS",
       music_time: "3:23",
+      hidden_state: false,
     },
 
     {
@@ -79,6 +86,7 @@ function MusicPlay() {
       author_name: "Egzod & Maestro Chives",
       album_name: "Royalty",
       music_time: "3:41",
+      hidden_state: false,
     },
 
     {
@@ -89,6 +97,7 @@ function MusicPlay() {
       author_name: "Eternxlkz",
       album_name: "BRODYAGA FUNK",
       music_time: "2:15",
+      hidden_state: false,
     },
 
     {
@@ -99,6 +108,7 @@ function MusicPlay() {
       author_name: "Unknown Brain x Rival",
       album_name: "Control",
       music_time: "2:47",
+      hidden_state: false,
     },
 
     {
@@ -109,6 +119,7 @@ function MusicPlay() {
       author_name: "Thousand Foot Krutch",
       album_name: "Courtesy Call",
       music_time: "3:56",
+      hidden_state: false,
     },
   ];
 
@@ -131,12 +142,17 @@ function MusicPlay() {
   this._musicAvatar = document.querySelector("#music-avatar");
   this._songName = document.querySelector("#music-name");
   this._authorName = document.querySelector("#author-name");
+  this._mainOverlay = document.querySelector("#main-overlay");
+  this._searchBtn = document.querySelector("#search-btn");
+  this._searchInput = document.querySelector("#search-input");
+  this._inputText = document.querySelector("#input-text");
 
   //   attr metrics
   this._currentSongIndex = 0;
   this._isPlaying = false;
   this._isShuffle = false;
   this._isLoop = false;
+  this._hasOverlay = false;
   this.PREV_STEP = -1;
   this.NEXT_STEP = 1;
   this.RESET_TIME = 2;
@@ -165,6 +181,11 @@ function MusicPlay() {
         index === this._currentSongIndex ? "active" : "";
       musicContainer.classList.add("musics-table__child", "music-item");
       musicContainer.setAttribute("data-index", index);
+      if (song.hidden_state) {
+        musicContainer.classList.add("hidden");
+      } else {
+        musicContainer.classList.remove("hidden");
+      }
 
       const musicIndex = document.createElement("div");
       musicIndex.className = "music-index";
@@ -393,8 +414,9 @@ function MusicPlay() {
 
   this._setGradientAndTime = () => {
     this._slideSeeking.oninput = () => {
+      const time = (this._slideSeeking.value * this._audio.duration) / 100;
+      this._updateCurrentTime(time);
       this._handlePercentageBar(this._slideSeeking);
-      this._updateCurrentTime(this._handlePercentageBar(this._slideSeeking));
     };
   };
 
@@ -452,6 +474,26 @@ function MusicPlay() {
     }
   };
 
+  this._displayInput = () => {
+    this._searchBtn.style.transform = "scale(0)";
+    this._searchInput.style.opacity = 1;
+    this._searchInput.style.visibility = "visible";
+    this._searchInput.style.maxWidth = "17.5rem";
+    this._mainOverlay.style.display = "block";
+    this._hasOverlay = true;
+  };
+
+  this._removeDisplayInput = () => {
+    this._searchBtn.removeAttribute("style");
+    this._mainOverlay.removeAttribute("style");
+    this._searchInput.removeAttribute("style");
+    this._hasOverlay = false;
+    this._songsList.forEach((song) => {
+      song.hidden_state = false;
+      this._renderSong();
+    });
+  };
+
   //   DOM Events
 
   this._songs.onclick = (e) => {
@@ -476,7 +518,14 @@ function MusicPlay() {
     this._updatePlayPauseIcon();
   };
 
-  document.addEventListener("keydown", this._handlePlayByEnter);
+  document.addEventListener("keydown", (e) => {
+    const inputKey = ["INPUT", "TEXTAREA"];
+
+    if (e.key === " " && !inputKey.includes(e.target.tagName)) {
+      e.preventDefault();
+      this._handlePlayByEnter(e);
+    }
+  });
   this._footerPrevBtn.onclick = () => {
     if (this._audio.currentTime >= this.RESET_TIME) {
       this._audio.currentTime = 0;
@@ -564,6 +613,31 @@ function MusicPlay() {
   this._volumeBar.oninput = () => {
     this._setVolume();
   };
+
+  this._searchBtn.onclick = (e) => {
+    this._displayInput();
+  };
+
+  this._mainOverlay.onclick = () => {
+    this._removeDisplayInput();
+  };
+
+  this._inputText.oninput = (e) => {
+    const value = e.target.value.trim().toLowerCase();
+
+    this._songsList.forEach((song) => {
+      song.hidden_state = true;
+      if (song.song_name.trim().toLowerCase().includes(value)) {
+        song.hidden_state = false;
+      }
+      this._renderSong();
+    });
+  };
+
+  // this._audio.onseeked = () => {
+  //   console.log(Math.floor(this._audio.currentTime / 60));
+  //   console.log(Math.floor(this._audio.currentTime % 60));
+  // };
 }
 
 const audio = new MusicPlay();
